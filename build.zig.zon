@@ -1,0 +1,34 @@
+.{
+    .name = .minidocx,
+    .version = "0.0.0",
+    .fingerprint = 0x71ff3500572f51ee, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.14.1",
+
+    .dependencies = .{
+        .compile_commands = .{
+            .url = "git+https://github.com/the-argus/zig-compile-commands#829ccbcd4a159604f521beb99750a124ea3b6214",
+            .hash = "N-V-__8AADXOAADcNh9Hjpz39SIE5bUSfQuGvhAuBHs8W9aF",
+        },
+        .miniz = .{
+            .url = "git+https://github.com/nukkeldev/miniz#eaa4b4dec04af6e0e467b31aafc06be5dc99d234",
+            .hash = "miniz-3.1.0-8ko5WXBSAAA3kCUeAnOPgNywi5nZ-O4vFyUNV9xmOPF-",
+        },
+        .pugixml = .{
+            .url = "git+https://github.com/jessechounard/pugixml#233428c35ee1bd7ae4a21ae9577005aff75de617",
+            .hash = "pugixml-1.15.0-SbQ3Xb0cAADyGH7kl3_dLBnTUcUOzOIO3qibQ77moihR",
+        },
+        .minidocx = .{
+            // .url = "git+https://github.com/totravel/minidocx?ref=next#09cde3fa37658580652950a42200a578d63839ac",
+            // .hash = "N-V-__8AABCu9wDFsoiqNYXxBSIZIyYCvgRCd-seu9mCETpV",
+            .path = "../test/minidocx/",
+            .lazy = true,
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "include",
+    },
+}
+
