@@ -7,13 +7,14 @@
 #ifdef __cplusplus
 #include "minidocx.hpp"
 using namespace md;
-extern "C" {
 
 // Picture Wrapper
 struct CWrapPicture {
   std::shared_ptr<Picture> p;
   CErrorProperties *err;
 };
+
+extern "C" {
 #else
 #include <stddef.h>
 #endif // #ifdef __cplusplus

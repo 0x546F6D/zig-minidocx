@@ -10,13 +10,14 @@
 #ifdef __cplusplus
 #include "minidocx.hpp"
 using namespace md;
-extern "C" {
 
 // Paragraph Wrapper
 struct CWrapParagraph {
   std::shared_ptr<Paragraph> p;
   CErrorProperties *err;
 };
+
+extern "C" {
 #endif // #ifdef __cplusplus
 
 typedef struct CWrapParagraph *CParagraph;

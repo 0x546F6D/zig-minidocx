@@ -6,14 +6,16 @@
 
 #ifdef __cplusplus
 #include "minidocx.hpp"
+
 using namespace md;
-extern "C" {
 
 // RichText Wrapper
 struct CWrapRichText {
   std::shared_ptr<RichText> p;
   CErrorProperties *err;
 };
+
+extern "C" {
 #endif // #ifdef __cplusplus
 
 typedef struct CWrapRichText *CRichText;

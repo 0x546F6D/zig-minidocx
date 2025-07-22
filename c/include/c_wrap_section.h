@@ -7,13 +7,14 @@
 #ifdef __cplusplus
 #include "minidocx.hpp"
 using namespace md;
-extern "C" {
 
 // Section Wrapper
 struct CWrapSection {
   std::shared_ptr<Section> p;
   CErrorProperties *err;
 };
+
+extern "C" {
 #endif // #ifdef __cplusplus
 
 typedef struct CWrapSection *CSection;

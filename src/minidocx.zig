@@ -8,3 +8,8 @@ pub const Section = @import("Section.zig");
 pub const Table = @import("Table.zig");
 
 pub const initDocument = Document.init;
+
+pub const common = @import("common.zig");
+pub const PackageProperties = common.PackageProperties;
+pub const Alignment = common.Alignment;
+pub const BorderStyle = common.BorderStyle;

@@ -7,13 +7,14 @@
 #ifdef __cplusplus
 #include "minidocx.hpp"
 using namespace md;
-extern "C" {
 
 // Document Wrapper
 struct CWrapDocument {
   Document *p;
   CErrorProperties *err;
 };
+
+extern "C" {
 #endif // #ifdef __cplusplus
 typedef struct CWrapDocument *CDocument;
 
