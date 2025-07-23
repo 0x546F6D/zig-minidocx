@@ -3,7 +3,6 @@
 #define C_WRAP_TABLE_H
 
 #include "c_wrap_cell.h"
-#include "c_wrap_common.h"
 
 typedef enum TableWidthType {
   TableWidthAuto,    // Specifies that width is determined by the table layout

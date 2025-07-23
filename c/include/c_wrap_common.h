@@ -2,6 +2,7 @@
 #ifndef C_WRAP_COMMON_H
 #define C_WRAP_COMMON_H
 
+#include "c_wrap_error.h"
 #include <stddef.h>
 
 typedef size_t RelationshipId;

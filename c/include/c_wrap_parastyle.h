@@ -1,7 +1,8 @@
 #pragma once
-#include "c_wrap_common.h"
 #ifndef C_WRAP_PARASTYLE_H
 #define C_WRAP_PARASTYLE_H
+
+#include "c_wrap_common.h"
 
 #ifdef __cplusplus
 #include "minidocx.hpp"

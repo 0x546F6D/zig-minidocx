@@ -21,11 +21,11 @@ pub fn build(b: *std.Build) void {
 
     // available examples
     const example_names: []const []const u8 = &.{
-        // "general",
+        "general",
         // "list",
         // "picture",
         // "style",
-        "table",
+        // "table",
     };
 
     const run_step = b.step("run", "run the build examples, should be used with -DbuildCppEx, -DbuildCEx, and/or -DbuildZigEx");
