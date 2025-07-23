@@ -8,16 +8,29 @@ typedef size_t RelationshipId;
 typedef size_t NumberingId;
 
 typedef enum CNumberingLevel : unsigned int {
-  Level1,
-  Level2,
-  Level3,
-  Level4,
-  Level5,
-  Level6,
-  Level7,
-  Level8,
-  Level9,
+  NumLevel1,
+  NumLevel2,
+  NumLevel3,
+  NumLevel4,
+  NumLevel5,
+  NumLevel6,
+  NumLevel7,
+  NumLevel8,
+  NumLevel9,
 } CNumberingLevel;
+
+typedef enum COutlineLevel {
+  OutlineLevel1,
+  OutlineLevel2,
+  OutlineLevel3,
+  OutlineLevel4,
+  OutlineLevel5,
+  OutlineLevel6,
+  OutlineLevel7,
+  OutlineLevel8,
+  OutlineLevel9,
+  BodyText,
+} COutlineLevel;
 
 typedef struct CPackageProperties {
   const char *title;
@@ -36,14 +49,24 @@ typedef enum CAlignment {
 } CAlignment;
 
 typedef enum CBorderStyle {
-  Single,
-  Double,
-  Triple,
-  Dotted,
-  Dashed,
-  DotDash,
-  Wave,
-  DoubleWave,
+  BorderSingle,
+  BorderDouble,
+  BorderTriple,
+  BorderDotted,
+  BorderDashed,
+  BorderDotDash,
+  BorderWave,
+  BorderDoubleWave,
 } CBorderStyle;
 
-#endif // C_WRAP_MINIDOCX_H
+typedef struct CBorderProperties {
+  CBorderStyle style_;
+  size_t width_;      // 8 = 1 pt
+  const char *color_; // "auto" or "RRGGBB"
+} CBorderProperties;
+// CBorderProperties CBorderProp = {
+//     .style_ = BorderSingle,
+//     .width_ = 4,
+//     .color_ = "auto",
+// };
+#endif // C_WRAP_COMMON_H

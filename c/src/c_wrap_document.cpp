@@ -87,6 +87,16 @@ NumberingId document_add_numbered_list_definition(CDocument self) {
   }
 }
 
+void document_add_parastyle(CDocument self, CParaStyle style) {
+  if (self->err->type)
+    return;
+
+  try {
+    self->p->addParagraphStyle(style->p);
+  } catch (const Exception &ex) {
+    _check_exception(self->err, ex);
+  }
+}
 int document_has_error(CDocument self) { return self->err->type; }
 const char *document_get_error(CDocument self) { return self->err->message; }
 void document_clear_error(CDocument self) { _clear_error(self->err); }

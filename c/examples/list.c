@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
   CParagraph p2 = section_add_paragraph(s);
   CRichText t2 = paragraph_add_richtext(p2, "Level two");
   paragraph_set_numid(p2, numId1);
-  paragraph_set_level(p2, Level2);
+  paragraph_set_level(p2, NumLevel2);
 
   // ParagraphPointer para3 = sect->addParagraph();
   // para3->addRichText("Level three");
@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
   CParagraph p3 = section_add_paragraph(s);
   CRichText t3 = paragraph_add_richtext(p3, "Level three");
   paragraph_set_numid(p3, numId1);
-  paragraph_set_level(p3, Level3);
+  paragraph_set_level(p3, NumLevel3);
 
   // sect->addParagraph()->addRichText("Example 2:");
   CParagraph p00 = section_add_paragraph(s);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
   CParagraph p5 = section_add_paragraph(s);
   CRichText t5 = paragraph_add_richtext(p5, "Level two");
   paragraph_set_numid(p5, numId1);
-  paragraph_set_level(p5, Level2);
+  paragraph_set_level(p5, NumLevel2);
 
   // ParagraphPointer para6 = sect->addParagraph();
   // para6->addRichText("Level three");
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
   CParagraph p6 = section_add_paragraph(s);
   CRichText t6 = paragraph_add_richtext(p6, "Level three");
   paragraph_set_numid(p6, numId1);
-  paragraph_set_level(p6, Level3);
+  paragraph_set_level(p6, NumLevel3);
 
   // doc.saveAs("out/cpp_list.docx");
   document_saveas(d, "out/c_list.docx");

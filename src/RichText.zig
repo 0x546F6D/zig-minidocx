@@ -9,7 +9,7 @@ pub inline fn deinit(self: RichText) void {
 
 // pub extern fn richtext_set_font_size(self: CRichText, size: c_int) void;
 pub inline fn setFontSize(self: RichText, size: c_uint) void {
-    c.richtext_set_font_size(self.text_c, size);
+    c.richtext_set_fontsize(self.text_c, size);
 }
 
 // pub extern fn richtext_set_color(self: CRichText, color: [*c]const u8) void;

@@ -20,17 +20,12 @@ pub fn build(b: *std.Build) void {
     }
 
     // available examples
-    // const example_names: []const []const u8 = &.{
-    //     "general",
-    //     "list",
-    //     "picture",
-    //     "style",
-    //     "table",
-    // };
-
     const example_names: []const []const u8 = &.{
         // "general",
-        "list",
+        // "list",
+        // "picture",
+        // "style",
+        "table",
     };
 
     const run_step = b.step("run", "run the build examples, should be used with -DbuildCppEx, -DbuildCEx, and/or -DbuildZigEx");
@@ -125,7 +120,10 @@ pub fn build(b: *std.Build) void {
         "c/src/c_wrap_picture.cpp",
         "c/src/c_wrap_richtext.cpp",
         "c/src/c_wrap_paragraph.cpp",
+        "c/src/c_wrap_cell.cpp",
+        "c/src/c_wrap_table.cpp",
         "c/src/c_wrap_section.cpp",
+        "c/src/c_wrap_parastyle.cpp",
         "c/src/c_wrap_document.cpp",
     };
 

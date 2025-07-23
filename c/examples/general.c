@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
   // rich->prop_.fontSize_ = 32;
   // rich->prop_.color_ = "FF0000";
   CRichText t1 = paragraph_add_richtext(p1, "Happy Chinese New Year!");
-  richtext_set_font_size(t1, 32);
+  richtext_set_fontsize(t1, 32);
   richtext_set_color(t1, "FF0000");
 
   // sect->addParagraph()->addRichText(

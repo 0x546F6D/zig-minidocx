@@ -23,6 +23,7 @@ typedef struct CWrapParagraph *CParagraph;
 
 // paragraph functions
 void paragraph_destroy(CParagraph self);
+void paragraph_set_style(CParagraph self, const char *style);
 void paragraph_set_align(CParagraph self, CAlignment align);
 void paragraph_set_numid(CParagraph self, NumberingId id);
 void paragraph_set_level(CParagraph self, CNumberingLevel level);

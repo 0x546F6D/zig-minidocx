@@ -1,7 +1,9 @@
 #pragma once
+#include "c_wrap_common.h"
 #ifndef C_WRAP_DOCUMENT_H
 #define C_WRAP_DOCUMENT_H
 
+#include "c_wrap_parastyle.h"
 #include "c_wrap_section.h"
 
 #ifdef __cplusplus
@@ -28,6 +30,7 @@ CSection document_add_section(CDocument self);
 RelationshipId document_add_image_path(CDocument self, const char *filename);
 NumberingId document_add_bulleted_list_definition(CDocument self);
 NumberingId document_add_numbered_list_definition(CDocument self);
+void document_add_parastyle(CDocument self, CParaStyle style);
 
 int document_has_error(CDocument self);
 const char *document_get_error(CDocument self);

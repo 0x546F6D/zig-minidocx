@@ -6,6 +6,10 @@ void paragraph_destroy(CParagraph self) {
   delete self;
 }
 
+void paragraph_set_style(CParagraph self, const char *style) {
+  self->p->prop_.style_ = style;
+}
+
 void paragraph_set_align(CParagraph self, CAlignment align) {
   self->p->prop_.align_ = static_cast<Alignment>(align);
 }
