@@ -1,3 +1,6 @@
+pub const RelationshipId = c.RelationshipId;
+pub const NumberingId = c.NumberingId;
+
 pub const PackageProperties = struct {
     title: ?[*:0]const u8 = null,
     subject: ?[*:0]const u8 = null,

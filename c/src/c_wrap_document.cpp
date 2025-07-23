@@ -10,7 +10,7 @@ CDocument document_create() {
 }
 
 void document_destroy(CDocument self) {
-  delete reinterpret_cast<Document *>(self->p);
+  delete self->p;
   delete self->err;
   delete self;
 }
@@ -45,24 +45,45 @@ CSection document_add_section(CDocument self) {
     return new CWrapSection{.err = _pass_down_cerror(self->err)};
 
   try {
-    return new CWrapSection{
-        .p = reinterpret_cast<Document *>(self->p)->addSection(),
-        .err = _init_cerror()};
+    return new CWrapSection{.p = self->p->addSection(), .err = _init_cerror()};
   } catch (const Exception &ex) {
     return new CWrapSection{.err = _init_cerror_from_exception(ex)};
   }
 }
 
-CRelationshipId document_add_image_path(CDocument self, const char *filename) {
+RelationshipId document_add_image_path(CDocument self, const char *filename) {
   if (self->err->type)
-    return new CWrapRelationshipId{.err = _pass_down_cerror(self->err)};
+    return SIZE_MAX;
 
   try {
-    return new CWrapRelationshipId{
-        .id = reinterpret_cast<Document *>(self->p)->addImage(filename),
-        .err = _init_cerror()};
+    return self->p->addImage(filename);
   } catch (const Exception &ex) {
-    return new CWrapRelationshipId{.err = _init_cerror_from_exception(ex)};
+    _check_exception(self->err, ex);
+    return SIZE_MAX;
+  }
+}
+
+NumberingId document_add_bulleted_list_definition(CDocument self) {
+  if (self->err->type)
+    return SIZE_MAX;
+
+  try {
+    return self->p->addBulletedListDefinition();
+  } catch (const Exception &ex) {
+    _check_exception(self->err, ex);
+    return SIZE_MAX;
+  }
+}
+
+NumberingId document_add_numbered_list_definition(CDocument self) {
+  if (self->err->type)
+    return SIZE_MAX;
+
+  try {
+    return self->p->addNumberedListDefinition();
+  } catch (const Exception &ex) {
+    _check_exception(self->err, ex);
+    return SIZE_MAX;
   }
 }
 

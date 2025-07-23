@@ -2,9 +2,9 @@
 #ifndef C_WRAP_RICHTEXT_H
 #define C_WRAP_RICHTEXT_H
 
-#include "c_wrap_error.h"
 
 #ifdef __cplusplus
+#include "c_wrap_error.h"
 #include "minidocx.hpp"
 
 using namespace md;

@@ -1,4 +1,3 @@
-// #include "c_wrap_error.h"
 #include "c_wrap_minidocx.h"
 #include <stdio.h>
 #include <sys/stat.h>
@@ -42,7 +41,7 @@ int main(int argc, char *argv[]) {
   // pict->prop_.extent_.setSize(4643, 6199, 300, 20);
   CParagraph p3 = section_add_paragraph(s);
   paragraph_set_align(p3, Centered);
-  CRelationshipId pic_id =
+  RelationshipId pic_id =
       document_add_image_path(d, "cpp/examples/samples/17533.jpg");
   CPicture pic = paragraph_add_picture(p3, pic_id);
   picture_set_size(pic, 4643, 6199, 300, 20);

@@ -50,7 +50,6 @@ pub fn main() !void {
     // CPicture pic = paragraph_add_picture(p3, pic_id);
     // picture_set_size(pic, 4643, 6199, 300, 20);
     const id = try doc.addImagePath("cpp/examples/samples/17533.jpg");
-    defer id.deinit();
     const picture = try paragraph3.addPicture(id);
     defer picture.deinit();
     picture.setSize(4643, 6199, 300, 20);

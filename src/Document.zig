@@ -41,18 +41,19 @@ pub inline fn addSection(self: Document) !Section {
     };
 }
 
-// pub extern fn document_add_image_path(d: CDocument, filename: [*c]const u8) CRelationshipId;
+// pub extern fn document_add_image_path(d: CDocument, filename: [*c]const u8) RelationshipId;
 pub inline fn addImagePath(self: Document, filename: ?[*:0]const u8) !RelationshipId {
-    const id_c: c.CRelationshipId = c.document_add_image_path(self.doc_c, filename);
-    try check(c.relationshipid_has_error(id_c));
-    return RelationshipId{
-        .id_c = id_c,
-    };
+    const id: RelationshipId = c.document_add_image_path(self.doc_c, filename);
+    try check(c.document_has_error(self.doc_c));
+    return id;
 }
 
 const std = @import("std");
 const c = @import("minidocx_c");
-const Properties = @import("common.zig").PackageProperties;
+const common = @import("common.zig");
+const Properties = common.PackageProperties;
+const RelationshipId = common.RelationshipId;
+const NumberingId = common.NumberingId;
 const Section = @import("Section.zig");
-const RelationshipId = @import("RelationshipId.zig");
+// const RelationshipId = @import("RelationshipId.zig");
 const check = @import("errors.zig").checkResult;

@@ -23,7 +23,7 @@ pub inline fn addRichText(self: Paragraph, text: ?[*:0]const u8) !RichText {
 
 // pub extern fn paragraph_add_picture(self: CParagraph, relationship_id: CRelationshipId) CPicture;
 pub inline fn addPicture(self: Paragraph, id: RelationshipId) !Picture {
-    const picture_c: c.CPicture = c.paragraph_add_picture(self.paragraph_c, id.id_c);
+    const picture_c: c.CPicture = c.paragraph_add_picture(self.paragraph_c, id);
     try check(c.picture_has_error(picture_c));
     return Picture{
         .picture_c = picture_c,
@@ -37,8 +37,9 @@ pub inline fn getStrError(self: Paragraph) ?[*:0]const u8 {
 
 const std = @import("std");
 const c = @import("minidocx_c");
+const common = @import("common.zig");
+const Alignment = common.Alignment;
+const RelationshipId = common.RelationshipId;
 const RichText = @import("RichText.zig");
-const RelationshipId = @import("RelationshipId.zig");
 const Picture = @import("Picture.zig");
-const Alignment = @import("common.zig").Alignment;
 const check = @import("errors.zig").checkResult;

@@ -25,7 +25,9 @@ void document_destroy(CDocument self);
 void document_saveas(CDocument self, const char *filename);
 void document_set_properties(CDocument self, const CPackageProperties *prop);
 CSection document_add_section(CDocument self);
-CRelationshipId document_add_image_path(CDocument d, const char *filename);
+RelationshipId document_add_image_path(CDocument self, const char *filename);
+NumberingId document_add_bulleted_list_definition(CDocument self);
+NumberingId document_add_numbered_list_definition(CDocument self);
 
 int document_has_error(CDocument self);
 const char *document_get_error(CDocument self);

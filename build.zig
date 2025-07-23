@@ -29,7 +29,8 @@ pub fn build(b: *std.Build) void {
     // };
 
     const example_names: []const []const u8 = &.{
-        "general",
+        // "general",
+        "list",
     };
 
     const run_step = b.step("run", "run the build examples, should be used with -DbuildCppEx, -DbuildCEx, and/or -DbuildZigEx");
@@ -126,7 +127,6 @@ pub fn build(b: *std.Build) void {
         "c/src/c_wrap_paragraph.cpp",
         "c/src/c_wrap_section.cpp",
         "c/src/c_wrap_document.cpp",
-        "c/src/c_wrap_relationshipid.cpp",
     };
 
     cw_minidocx_mod.addCSourceFiles(.{
