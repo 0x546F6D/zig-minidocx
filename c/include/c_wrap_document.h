@@ -2,7 +2,6 @@
 #ifndef C_WRAP_DOCUMENT_H
 #define C_WRAP_DOCUMENT_H
 
-#include "c_wrap_error.h"
 #include "c_wrap_parastyle.h"
 #include "c_wrap_section.h"
 
