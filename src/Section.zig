@@ -28,5 +28,6 @@ pub inline fn getStrError(self: Section) ?[*:0]const u8 {
 
 const std = @import("std");
 const c = @import("minidocx_c");
+pub const CSection = c.CSection;
 const Paragraph = @import("Paragraph.zig");
 const check = @import("errors.zig").checkResult;

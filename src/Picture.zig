@@ -1,6 +1,6 @@
 const Picture = @This();
 
-picture_c: c.CPicture,
+picture_c: CPicture,
 
 // pub extern fn picture_destroy(self: CPicture) void;
 pub inline fn deinit(self: Picture) void {
@@ -19,4 +19,5 @@ pub inline fn getStrError(self: Picture) ?[*:0]const u8 {
 
 const std = @import("std");
 const c = @import("minidocx_c");
+pub const CPicture = c.CPicture;
 const check = @import("errors.zig").checkResult;

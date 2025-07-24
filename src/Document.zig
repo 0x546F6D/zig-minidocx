@@ -1,6 +1,6 @@
 const Document = @This();
 
-doc_c: c.CDocument,
+doc_c: CDocument,
 
 // pub extern fn document_create(...) CDocument;
 pub inline fn init() !Document {
@@ -48,12 +48,27 @@ pub inline fn addImagePath(self: Document, filename: ?[*:0]const u8) !Relationsh
     return id;
 }
 
+// pub extern fn document_add_bulleted_list_definition(self: CDocument) NumberingId;
+pub inline fn addBulletedListDefinition(self: Document) !NumberingId {
+    const id: NumberingId = c.document_add_bulleted_list_definition(self.doc_c);
+    try check(c.document_has_error(self.doc_c));
+    return id;
+}
+// pub extern fn document_add_numbered_list_definition(self: CDocument) NumberingId;
+pub inline fn addNumberedListDefinition(self: Document) !NumberingId {
+    const id: NumberingId = c.document_add_numbered_list_definition(self.doc_c);
+    try check(c.document_has_error(self.doc_c));
+    return id;
+}
+
 const std = @import("std");
 const c = @import("minidocx_c");
+pub const CDocument = c.CDocument;
 const common = @import("common.zig");
 const Properties = common.PackageProperties;
 const RelationshipId = common.RelationshipId;
 const NumberingId = common.NumberingId;
 const Section = @import("Section.zig");
+const CSection = Section.CSection;
 // const RelationshipId = @import("RelationshipId.zig");
 const check = @import("errors.zig").checkResult;

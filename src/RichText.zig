@@ -1,6 +1,6 @@
 const RichText = @This();
 
-text_c: c.CRichText,
+text_c: CRichText,
 
 // pub extern fn richtext_destroy(self: CRichText) void;
 pub inline fn deinit(self: RichText) void {
@@ -24,4 +24,5 @@ pub inline fn getStrError(self: RichText) ?[*:0]const u8 {
 
 const std = @import("std");
 const c = @import("minidocx_c");
+pub const CRichText = c.CRichText;
 const check = @import("errors.zig").checkResult;

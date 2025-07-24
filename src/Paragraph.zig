@@ -1,6 +1,31 @@
 const Paragraph = @This();
 
-paragraph_c: c.CParagraph,
+paragraph_c: CParagraph,
+
+pub const NumberingLevel = enum(usize) {
+    level1 = c.NumLevel1,
+    level2 = c.NumLevel2,
+    level3 = c.NumLevel3,
+    level4 = c.NumLevel4,
+    level5 = c.NumLevel5,
+    level6 = c.NumLevel6,
+    level7 = c.NumLevel7,
+    level8 = c.NumLevel8,
+    level9 = c.NumLevel9,
+};
+
+pub const OutlineLevel = enum(c_int) {
+    OutlineLevel1 = c.OutlineLevel1,
+    OutlineLevel2 = c.OutlineLevel2,
+    OutlineLevel3 = c.OutlineLevel3,
+    OutlineLevel4 = c.OutlineLevel4,
+    OutlineLevel5 = c.OutlineLevel5,
+    OutlineLevel6 = c.OutlineLevel6,
+    OutlineLevel7 = c.OutlineLevel7,
+    OutlineLevel8 = c.OutlineLevel8,
+    OutlineLevel9 = c.OutlineLevel9,
+    BodyText = c.BodyText,
+};
 
 // pub extern fn paragraph_destroy(self: CParagraph) void;
 pub inline fn deinit(self: Paragraph) void {
@@ -14,16 +39,26 @@ pub inline fn setAlign(self: Paragraph, alignment: Alignment) void {
 
 // pub extern fn paragraph_add_richtext(self: CParagraph, text: [*c]const u8) CRichText;
 pub inline fn addRichText(self: Paragraph, text: ?[*:0]const u8) !RichText {
-    const text_c: c.CRichText = c.paragraph_add_richtext(self.paragraph_c, text);
+    const text_c: CRichText = c.paragraph_add_richtext(self.paragraph_c, text);
     try check(c.richtext_has_error(text_c));
     return RichText{
         .text_c = text_c,
     };
 }
 
+// pub extern fn paragraph_set_numid(self: CParagraph, id: NumberingId) void;
+pub inline fn setNumid(self: Paragraph, id: NumberingId) void {
+    c.paragraph_set_numid(self.paragraph_c, id);
+}
+
+// pub extern fn paragraph_set_level(self: CParagraph, level: CNumberingLevel) void;
+pub inline fn setLevel(self: Paragraph, level: NumberingLevel) void {
+    c.paragraph_set_level(self.paragraph_c, @intFromEnum(level));
+}
+
 // pub extern fn paragraph_add_picture(self: CParagraph, relationship_id: CRelationshipId) CPicture;
 pub inline fn addPicture(self: Paragraph, id: RelationshipId) !Picture {
-    const picture_c: c.CPicture = c.paragraph_add_picture(self.paragraph_c, id);
+    const picture_c: CPicture = c.paragraph_add_picture(self.paragraph_c, id);
     try check(c.picture_has_error(picture_c));
     return Picture{
         .picture_c = picture_c,
@@ -37,9 +72,13 @@ pub inline fn getStrError(self: Paragraph) ?[*:0]const u8 {
 
 const std = @import("std");
 const c = @import("minidocx_c");
+pub const CParagraph = c.CParagraph;
 const common = @import("common.zig");
 const Alignment = common.Alignment;
 const RelationshipId = common.RelationshipId;
+const NumberingId = common.NumberingId;
 const RichText = @import("RichText.zig");
+const CRichText = RichText.CRichText;
 const Picture = @import("Picture.zig");
+const CPicture = Picture.CPicture;
 const check = @import("errors.zig").checkResult;
