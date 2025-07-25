@@ -17,6 +17,11 @@ pub inline fn getStrError(self: Picture) ?[*:0]const u8 {
     return c.picture_get_error(self.picture_c);
 }
 
+// pub extern fn picture_clear_error(self: CPicture) void;
+pub inline fn clearError(self: Picture) void {
+    return c.picture_clear_error(self.picture_c);
+}
+
 const std = @import("std");
 const c = @import("minidocx_c");
 pub const CPicture = c.CPicture;

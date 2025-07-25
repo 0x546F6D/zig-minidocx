@@ -24,8 +24,8 @@ pub fn build(b: *std.Build) void {
         // "general",
         // "list",
         // "picture",
-        "style",
-        // "table",
+        // "style",
+        "table",
     };
 
     const run_step = b.step("run", "run the build examples, should be used with -DbuildCppEx, -DbuildCEx, and/or -DbuildZigEx");

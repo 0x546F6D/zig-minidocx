@@ -21,13 +21,29 @@ pub inline fn addParagraph(self: Section) !Paragraph {
     };
 }
 
+// pub extern fn section_add_table(self: CSection, rows: usize, cols: usize) CTable;
+pub inline fn addTable(self: Section, rows: usize, cols: usize) !Table {
+    const table_c: CTable = c.section_add_table(self.section_c, rows, cols);
+    try check(c.table_has_error(table_c));
+    return Table{
+        .table_c = table_c,
+    };
+}
+
 // pub extern fn section_get_error(self: CSection) [*c]const u8;
 pub inline fn getStrError(self: Section) ?[*:0]const u8 {
     return c.section_get_error(self.section_c);
+}
+
+// pub extern fn section_clear_error(self: CSection) void;
+pub inline fn clearError(self: Section) void {
+    return c.section_clear_error(self.section_c);
 }
 
 const std = @import("std");
 const c = @import("minidocx_c");
 pub const CSection = c.CSection;
 const Paragraph = @import("Paragraph.zig");
+const Table = @import("Table.zig");
+pub const CTable = c.CTable;
 const check = @import("errors.zig").checkResult;

@@ -27,11 +27,6 @@ pub inline fn saveAs(self: Document, filename: ?[*:0]const u8) !void {
     try check(c.document_has_error(self.doc_c));
 }
 
-// pub extern fn document_get_error(self: CDocument) [*c]const u8;
-pub inline fn getStrError(self: Document) ?[*:0]const u8 {
-    return c.document_get_error(self.doc_c);
-}
-
 // pub extern fn document_add_section(self: CDocument) CSection;
 pub inline fn addSection(self: Document) !Section {
     const section_c: c.CSection = c.document_add_section(self.doc_c);
@@ -65,6 +60,16 @@ pub inline fn addNumberedListDefinition(self: Document) !NumberingId {
 pub inline fn addParagraphStyle(self: Document, style: ParagraphStyle) !void {
     c.document_add_parastyle(self.doc_c, style.style_c);
     try check(c.document_has_error(self.doc_c));
+}
+
+// pub extern fn document_get_error(self: CDocument) [*c]const u8;
+pub inline fn getStrError(self: Document) ?[*:0]const u8 {
+    return c.document_get_error(self.doc_c);
+}
+
+// pub extern fn document_clear_error(self: CDocument) void;
+pub inline fn clearError(self: Document) void {
+    return c.document_clear_error(self.document_c);
 }
 
 const std = @import("std");

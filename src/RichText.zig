@@ -22,6 +22,11 @@ pub inline fn getStrError(self: RichText) ?[*:0]const u8 {
     return c.richtext_get_error(self.text_c);
 }
 
+// pub extern fn richtext_clear_error(self: CRichText) void;
+pub inline fn clearError(self: RichText) void {
+    return c.richtext_clear_error(self.richtext_c);
+}
+
 const std = @import("std");
 const c = @import("minidocx_c");
 pub const CRichText = c.CRichText;

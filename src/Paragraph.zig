@@ -75,6 +75,11 @@ pub inline fn getStrError(self: Paragraph) ?[*:0]const u8 {
     return c.paragraph_get_error(self.paragraph_c);
 }
 
+// pub extern fn paragraph_clear_error(self: CParagraph) void;
+pub inline fn clearError(self: Paragraph) void {
+    return c.paragraph_clear_error(self.paragraph_c);
+}
+
 const std = @import("std");
 const c = @import("minidocx_c");
 pub const CParagraph = c.CParagraph;
