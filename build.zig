@@ -21,10 +21,10 @@ pub fn build(b: *std.Build) void {
 
     // available examples
     const example_names: []const []const u8 = &.{
-        // "general",
-        // "list",
-        // "picture",
-        // "style",
+        "general",
+        "list",
+        "picture",
+        "style",
         "table",
     };
 

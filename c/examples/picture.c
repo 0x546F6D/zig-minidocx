@@ -1,5 +1,4 @@
 #include "c_wrap_minidocx.h"
-#include <sys/stat.h>
 
 #define TEXT1                                                                  \
   u8"\
@@ -24,43 +23,31 @@ The spring festival promotes family values, social cohesion and peace while \
 providing a sense of identity and continuity for the Chinese people."
 
 int main(int argc, char *argv[]) {
-  // Document doc;
   CDocument d = document_create();
 
-  // SectionPointer sect = doc.addSection();
   CSection s = document_add_section(d);
 
-  // sect->addParagraph()->addRichText(TEXT1);
   CParagraph p1 = section_add_paragraph(s);
   CRichText t1 = paragraph_add_richtext(p1, TEXT1);
 
-  // PicturePointer pict1 = sect->addParagraph()->addPicture(
-  //     doc.addImage("cpp/examples/samples/17528.jpg"));
-  // pict1->prop_.extent_.setSize(4725, 3173, 300, 20);
   RelationshipId pic1_id =
       document_add_image_path(d, "cpp/examples/samples/17528.jpg");
   CParagraph p2 = section_add_paragraph(s);
   CPicture pic1 = paragraph_add_picture(p2, pic1_id);
   picture_set_size(pic1, 4725, 3173, 300, 20);
 
-  // sect->addParagraph()->addRichText(TEXT2);
   CParagraph p3 = section_add_paragraph(s);
   CRichText t2 = paragraph_add_richtext(p3, TEXT2);
 
-  // PicturePointer pict2 = sect->addParagraph()->addPicture(
-  //     doc.addImage("cpp/examples/samples/17529.jpg"));
-  // pict2->prop_.extent_.setSize(4838, 3323, 300, 20);
   RelationshipId pic2_id =
       document_add_image_path(d, "cpp/examples/samples/17529.jpg");
   CParagraph p4 = section_add_paragraph(s);
   CPicture pic2 = paragraph_add_picture(p4, pic2_id);
   picture_set_size(pic2, 4838, 3323, 300, 20);
 
-  // sect->addParagraph()->addRichText(TEXT3);
   CParagraph p5 = section_add_paragraph(s);
   CRichText t3 = paragraph_add_richtext(p5, TEXT3);
 
-  // doc.saveAs("out/cpp_picture.docx");
   document_saveas(d, "out/c_picture.docx");
 
   // clean up
