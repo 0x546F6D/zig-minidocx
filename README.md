@@ -50,7 +50,7 @@ pub fn main() !void {
     };
     doc.setProperties(prop);
 
-    try doc.saveAs("zig_general.docx");
+    try doc.saveAs("document.docx");
 }
 
 const std = @import("std");
