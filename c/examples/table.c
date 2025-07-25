@@ -7,11 +7,11 @@ int main(int argc, char *argv[]) {
 
   // SectionPointer sect = doc.addSection();
   CSection s = document_add_section(d);
-  //
+
   // sect->addParagraph()->addRichText("Example:");
   CParagraph p1 = section_add_paragraph(s);
   CRichText t1 = paragraph_add_richtext(p1, "Example:");
-  //
+
   // TablePointer tbl = sect->addTable(5, 7);
   // tbl->prop_.width_.type_ = TableProperties::WidthType::Percent;
   CTable tbl = section_add_table(s, 5, 7);

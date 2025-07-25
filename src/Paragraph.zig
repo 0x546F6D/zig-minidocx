@@ -15,16 +15,16 @@ pub const NumberingLevel = enum(usize) {
 };
 
 pub const OutlineLevel = enum(c_int) {
-    OutlineLevel1 = c.OutlineLevel1,
-    OutlineLevel2 = c.OutlineLevel2,
-    OutlineLevel3 = c.OutlineLevel3,
-    OutlineLevel4 = c.OutlineLevel4,
-    OutlineLevel5 = c.OutlineLevel5,
-    OutlineLevel6 = c.OutlineLevel6,
-    OutlineLevel7 = c.OutlineLevel7,
-    OutlineLevel8 = c.OutlineLevel8,
-    OutlineLevel9 = c.OutlineLevel9,
-    BodyText = c.BodyText,
+    level1 = c.OutlineLevel1,
+    level2 = c.OutlineLevel2,
+    level3 = c.OutlineLevel3,
+    level4 = c.OutlineLevel4,
+    level5 = c.OutlineLevel5,
+    level6 = c.OutlineLevel6,
+    level7 = c.OutlineLevel7,
+    level8 = c.OutlineLevel8,
+    level9 = c.OutlineLevel9,
+    body_text = c.BodyText,
 };
 
 // pub extern fn paragraph_destroy(self: CParagraph) void;
@@ -44,6 +44,11 @@ pub inline fn addRichText(self: Paragraph, text: ?[*:0]const u8) !RichText {
     return RichText{
         .text_c = text_c,
     };
+}
+
+// pub extern fn parastyle_set_color(self: CParaStyle, color: [*c]const u8) void;
+pub inline fn setStyle(self: Paragraph, style: ?[*:0]const u8) void {
+    c.paragraph_set_style(self.paragraph_c, style);
 }
 
 // pub extern fn paragraph_set_numid(self: CParagraph, id: NumberingId) void;

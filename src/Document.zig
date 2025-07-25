@@ -61,6 +61,12 @@ pub inline fn addNumberedListDefinition(self: Document) !NumberingId {
     return id;
 }
 
+// pub extern fn document_add_parastyle(self: CDocument, style: CParaStyle) void;
+pub inline fn addParagraphStyle(self: Document, style: ParagraphStyle) !void {
+    c.document_add_parastyle(self.doc_c, style.style_c);
+    try check(c.document_has_error(self.doc_c));
+}
+
 const std = @import("std");
 const c = @import("minidocx_c");
 pub const CDocument = c.CDocument;
@@ -70,5 +76,5 @@ const RelationshipId = common.RelationshipId;
 const NumberingId = common.NumberingId;
 const Section = @import("Section.zig");
 const CSection = Section.CSection;
-// const RelationshipId = @import("RelationshipId.zig");
+const ParagraphStyle = @import("ParagraphStyle.zig");
 const check = @import("errors.zig").checkResult;

@@ -3,6 +3,9 @@ pub const c = @import("minidocx_c");
 pub const Document = @import("Document.zig");
 pub const initDocument = Document.init;
 
+pub const ParagraphStyle = @import("ParagraphStyle.zig");
+pub const initParagraphStyle = ParagraphStyle.init;
+
 pub const Paragraph = @import("Paragraph.zig");
 pub const Picture = @import("Picture.zig");
 pub const RichText = @import("RichText.zig");
